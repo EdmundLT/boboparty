@@ -6,6 +6,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import Link from "next/link";
 import Image from "next/image";
 import { getDictionary } from "@/lib/get-dictionary";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -79,6 +80,7 @@ export default async function RootLayout({
           </div>
         </nav>
         <main>{children}</main>
+        <WhatsAppButton />
       </body>
     </html>
   );
