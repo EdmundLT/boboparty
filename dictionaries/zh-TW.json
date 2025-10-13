@@ -1,0 +1,84 @@
+{
+  "navigation": {
+    "home": "首頁",
+    "about": "關於我們",
+    "blog": "派對資訊",
+    "contact": "聯絡我們"
+  },
+  "home": {
+    "title": "歡迎來到 BoboParty",
+    "description": "專營派對用品，提供優質氣球、裝飾及派對佈置服務",
+    "hero": {
+      "title": "讓每個派對都成為難忘回憶",
+      "subtitle": "專業派對用品及佈置服務",
+      "description": "BoboParty 是香港專業派對用品供應商，專營各類氣球、裝飾及派對佈置服務。我們擁有三間實體店舖，為您提供多元化的派對用品選擇，致力為每位顧客打造獨一無二的派對體驗。",
+      "cta": "立即查看",
+      "contactUs": "關於我們"
+    },
+    "showcase": {
+      "title": "精選佈置案例",
+      "subtitle": "查看我們的專業派對佈置作品",
+      "viewDetails": "查看詳情",
+      "previous": "上一張",
+      "next": "下一張"
+    },
+    "instagram": {
+      "title": "Instagram 最新動態",
+      "subtitle": "追蹤我們的 Instagram 查看更多精彩作品",
+      "viewOnInstagram": "前往 Instagram",
+      "previous": "上一張",
+      "next": "下一張",
+      "scrollLeft": "向左滾動",
+      "scrollRight": "向右滾動"
+    }
+  },
+  "common": {
+    "language": "語言",
+    "switchLanguage": "切換語言",
+    "submit": "提交",
+    "submitting": "提交中...",
+    "reset": "重設",
+    "required": "必填",
+    "success": "成功",
+    "error": "錯誤"
+  },
+  "about": {
+    "title": "關於 BoboParty",
+    "subtitle": "香港專業派對用品供應商，為您打造難忘的派對體驗",
+    "ourStory": {
+      "title": "我們的故事",
+      "content1": "BoboParty 成立至今，一直致力為香港市民提供優質的派對用品及專業佈置服務。我們深信每個派對都是獨一無二的，值得用心策劃和佈置。",
+      "content2": "從小型家庭聚會到大型企業活動，我們的專業團隊都能為您提供最合適的方案。我們精選優質的氣球、裝飾品和派對用品，確保每個細節都能達到最佳效果。",
+      "content3": "目前我們在香港設有三間實體店舖，分別位於屯門、葵芳及沙田，方便各區顧客選購及自取。我們的團隊隨時為您提供專業建議，協助您打造完美的派對。"
+    },
+    "whyChooseUs": {
+      "title": "為什麼選擇我們",
+      "quality": {
+        "title": "優質產品",
+        "description": "精選優質派對用品，確保每件產品都達到最高標準，讓您的派對更精彩。"
+      },
+      "experience": {
+        "title": "專業經驗",
+        "description": "豐富的派對策劃經驗，專業團隊為您提供最佳的佈置方案和建議。"
+      },
+      "service": {
+        "title": "貼心服務",
+        "description": "三間實體店舖提供便捷服務，從諮詢到取貨都能得到最佳體驗。"
+      }
+    },
+    "visitUs": "歡迎蒞臨我們的店舖"
+  },
+  "blog": {
+    "title": "派對靈感與資訊",
+    "subtitle": "探索派對佈置靈感、實用技巧及最新趨勢",
+    "backToList": "返回文章列表",
+    "noPosts": "暫無文章",
+    "readMore": "閱讀更多"
+  },
+  "stores": {
+    "locations": "分店位置",
+    "openingHours": "營業時間",
+    "contact": "聯絡我們",
+    "whatsapp": "WhatsApp"
+  }
+}

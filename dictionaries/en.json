@@ -1,0 +1,84 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "blog": "Party Ideas",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Welcome to BoboParty",
+    "description": "Specializing in party supplies, offering quality balloons, decorations, and party setup services",
+    "hero": {
+      "title": "Making Every Party a Memorable Experience",
+      "subtitle": "Professional Party Supplies & Decoration Services",
+      "description": "BoboParty is a professional party supplies provider in Hong Kong, specializing in balloons, decorations, and party setup services. With three physical stores, we offer a diverse selection of party supplies and are committed to creating unique party experiences for every customer.",
+      "cta": "Explore Now",
+      "contactUs": "About Us"
+    },
+    "showcase": {
+      "title": "Featured Decoration Showcase",
+      "subtitle": "View our professional party decoration works",
+      "viewDetails": "View Details",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "instagram": {
+      "title": "Latest from Instagram",
+      "subtitle": "Follow us on Instagram for more amazing works",
+      "viewOnInstagram": "View on Instagram",
+      "previous": "Previous",
+      "next": "Next",
+      "scrollLeft": "Scroll left",
+      "scrollRight": "Scroll right"
+    }
+  },
+  "common": {
+    "language": "Language",
+    "switchLanguage": "Switch Language",
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "reset": "Reset",
+    "required": "Required",
+    "success": "Success",
+    "error": "Error"
+  },
+  "about": {
+    "title": "About BoboParty",
+    "subtitle": "Professional party supplies provider in Hong Kong, creating unforgettable party experiences for you",
+    "ourStory": {
+      "title": "Our Story",
+      "content1": "Since our establishment, BoboParty has been committed to providing quality party supplies and professional decoration services to Hong Kong residents. We believe every party is unique and deserves careful planning and decoration.",
+      "content2": "From small family gatherings to large corporate events, our professional team can provide you with the most suitable solutions. We carefully select quality balloons, decorations, and party supplies to ensure every detail achieves the best results.",
+      "content3": "We currently have three physical stores in Hong Kong, located in Tuen Mun, Kwai Fong, and Sha Tin, making it convenient for customers from all districts to shop and pick up. Our team is always ready to provide professional advice to help you create the perfect party."
+    },
+    "whyChooseUs": {
+      "title": "Why Choose Us",
+      "quality": {
+        "title": "Quality Products",
+        "description": "Carefully selected quality party supplies, ensuring every product meets the highest standards to make your party more spectacular."
+      },
+      "experience": {
+        "title": "Professional Experience",
+        "description": "Rich party planning experience, professional team providing you with the best decoration plans and advice."
+      },
+      "service": {
+        "title": "Attentive Service",
+        "description": "Three physical stores providing convenient services, from consultation to pickup, you can get the best experience."
+      }
+    },
+    "visitUs": "Visit Our Stores"
+  },
+  "blog": {
+    "title": "Party Inspiration & Ideas",
+    "subtitle": "Explore party decoration inspiration, practical tips, and latest trends",
+    "backToList": "Back to Articles",
+    "noPosts": "No posts yet",
+    "readMore": "Read More"
+  },
+  "stores": {
+    "locations": "Store Locations",
+    "openingHours": "Opening Hours",
+    "contact": "Contact Us",
+    "whatsapp": "WhatsApp"
+  }
+}
