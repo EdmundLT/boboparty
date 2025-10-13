@@ -18,4 +18,4 @@ export const SHOP_LOCATIONS: ShopLocation[] = [
   }
 ]
 
-export const CONTACT_WHATSAPP = "65344590"
+export const CONTACT_WHATSAPP = "85265344590"
