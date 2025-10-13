@@ -34,7 +34,7 @@ export default function InstagramCarousel({ posts, dict }: InstagramCarouselProp
 
   const goToNext = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === prevIndex.length - 1 ? 0 : prevIndex + 1
+      prevIndex === posts.length - 1 ? 0 : prevIndex + 1
     )
   }
 

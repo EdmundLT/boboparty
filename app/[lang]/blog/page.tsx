@@ -6,9 +6,9 @@ import BlogCard from "@/components/BlogCard";
 export default async function BlogPage({
   params,
 }: {
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ lang: string }>;
 }) {
-  const { lang } = await params;
+  const { lang } = await params as { lang: Locale };
   const dict = await getDictionary(lang);
   const baseUrl = lang === 'zh-TW' ? '' : '/en';
   const posts = await getBlogPosts(lang);
