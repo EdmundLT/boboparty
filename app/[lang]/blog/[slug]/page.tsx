@@ -7,11 +7,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 type BlogPostPageProps = {
-  params: Promise<{ lang: Locale; slug: string }>;
+  params: Promise<{ lang: string; slug: string }>;
 };
 
 export async function generateMetadata({ params }: BlogPostPageProps) {
-  const { lang, slug } = await params;
+  const { lang, slug } = await params as { lang: Locale; slug: string };
   const post = await getBlogPost(slug, lang);
 
   if (!post) {
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { lang, slug } = await params;
+  const { lang, slug } = await params as { lang: Locale; slug: string };
   const dict = await getDictionary(lang);
   const baseUrl = lang === 'zh-TW' ? '' : '/en';
   const post = await getBlogPost(slug, lang);
@@ -34,7 +34,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const formattedDate = new Date(post.publishedAt).toLocaleDateString(
-    params.lang === 'zh-TW' ? 'zh-HK' : 'en-US',
+    lang === 'zh-TW' ? 'zh-HK' : 'en-US',
     {
       year: 'numeric',
       month: 'long',
@@ -101,10 +101,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* CTA Section */}
         <div className="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-8 text-center text-white">
           <h3 className="text-2xl font-bold mb-4">
-            {params.lang === 'zh-TW' ? '準備策劃您的派對？' : 'Ready to Plan Your Party?'}
+            {lang === 'zh-TW' ? '準備策劃您的派對？' : 'Ready to Plan Your Party?'}
           </h3>
           <p className="mb-6">
-            {params.lang === 'zh-TW'
+            {lang === 'zh-TW'
               ? '了解更多關於 BoboParty，讓我們幫您打造難忘的派對體驗'
               : 'Learn more about BoboParty and let us create an unforgettable party experience for you'}
           </p>
@@ -112,7 +112,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             href={`${baseUrl}/about`}
             className="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
           >
-            {params.lang === 'zh-TW' ? '了解更多' : 'Learn More'}
+            {lang === 'zh-TW' ? '了解更多' : 'Learn More'}
           </Link>
         </div>
       </article>

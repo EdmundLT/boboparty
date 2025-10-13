@@ -11,9 +11,9 @@ import { INSTAGRAM_FEATURED_POSTS } from "@/data/instagram";
 export default async function Home({
   params,
 }: {
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ lang: string }>;
 }) {
-  const { lang } = await params;
+  const { lang } = await params as { lang: Locale };
   const dict = await getDictionary(lang);
   const baseUrl = lang === 'zh-TW' ? '' : '/en';
 
