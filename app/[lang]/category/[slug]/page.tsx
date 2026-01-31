@@ -3,6 +3,8 @@ import { getDictionary } from "@/lib/get-dictionary";
 import { getCollectionWithProducts } from "@/lib/products";
 import ProductGrid from "@/components/ProductGrid";
 
+export const dynamic = "force-dynamic";
+
 export default async function CategoryPage({
   params,
 }: {

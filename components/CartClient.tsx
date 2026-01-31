@@ -115,7 +115,7 @@ export default function CartClient() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 lg:grid lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-8 lg:space-y-0">
       <div className="space-y-4">
         {cart.lines.map((line) => (
           <div
@@ -166,7 +166,7 @@ export default function CartClient() {
         ))}
       </div>
 
-      <div className="rounded-xl border border-gray-200 bg-white p-6 space-y-4">
+      <div className="rounded-xl border border-gray-200 bg-white p-6 space-y-4 h-fit lg:sticky lg:top-24">
         <div className="flex items-center justify-between text-gray-700">
           <span>Subtotal</span>
           <span>{formatMoney(cart.cost.subtotal.amount, cart.cost.subtotal.currencyCode)}</span>
@@ -181,6 +181,9 @@ export default function CartClient() {
         >
           Proceed to Checkout
         </a>
+        <p className="text-xs text-gray-500 text-center">
+          Secure checkout powered by Shopify
+        </p>
       </div>
     </div>
   );

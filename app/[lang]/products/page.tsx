@@ -1,9 +1,10 @@
-import Link from "next/link";
 import type { Locale } from "@/i18n.config";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getCollections, getProducts } from "@/lib/products";
 import CategoryGrid from "@/components/CategoryGrid";
-import ProductGrid from "@/components/ProductGrid";
+import ProductsExplorer from "@/components/ProductsExplorer";
+
+export const dynamic = "force-dynamic";
 
 export default async function ProductsPage({
   params,
@@ -52,7 +53,7 @@ export default async function ProductsPage({
 
         <div className="space-y-6">
           <h2 className="text-2xl font-semibold text-gray-900">{dict.products.allProductsTitle}</h2>
-          <ProductGrid products={products} baseUrl={baseUrl} />
+          <ProductsExplorer products={products} baseUrl={baseUrl} dict={dict} />
         </div>
       </section>
     </div>

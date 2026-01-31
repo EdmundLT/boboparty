@@ -22,7 +22,7 @@ export default function ProductCard({ product, baseUrl }: ProductCardProps) {
       href={`${baseUrl}/product/${product.handle}`}
       className="group rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden"
     >
-      <div className="relative h-56 w-full bg-gray-100">
+      <div className="relative h-44 w-full bg-gray-100 sm:h-56">
         {imageUrl ? (
           <Image
             src={imageUrl}
@@ -35,6 +35,11 @@ export default function ProductCard({ product, baseUrl }: ProductCardProps) {
             No image
           </div>
         )}
+        {product.stockStatus === "out_of_stock" ? (
+          <div className="absolute top-3 left-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-gray-600">
+            Out of stock
+          </div>
+        ) : null}
       </div>
       <div className="p-4 space-y-2">
         <div className="flex items-start justify-between gap-2">

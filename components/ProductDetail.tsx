@@ -59,7 +59,9 @@ export default function ProductDetail({ product, variants }: ProductDetailProps)
 
         <p className="text-gray-600 whitespace-pre-line">{product.description}</p>
 
-        <ProductPurchase variants={variants} />
+        <div className="sticky bottom-0 bg-white py-4 border-t border-gray-200 lg:static lg:border-none lg:py-0">
+          <ProductPurchase variants={variants} />
+        </div>
       </div>
     </div>
   );
