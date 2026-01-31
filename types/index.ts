@@ -13,12 +13,40 @@ export type ProductCategory = {
 
 export type Product = {
   id: string;
+  handle: string;
   name: string;
-  category: ProductCategory;
+  category?: ProductCategory;
   price: number;
   description: string;
   imageUrls: string[];
   stockStatus: "in_stock" | "out_of_stock";
+}
+
+export type Money = {
+  amount: string;
+  currencyCode: string;
+}
+
+export type CartLine = {
+  id: string;
+  quantity: number;
+  merchandiseId: string;
+  title: string;
+  productTitle: string;
+  productHandle: string;
+  imageUrl?: string;
+  price: Money;
+}
+
+export type Cart = {
+  id: string;
+  checkoutUrl: string;
+  totalQuantity: number;
+  cost: {
+    subtotal: Money;
+    total: Money;
+  };
+  lines: CartLine[];
 }
 
 export type CustomerFeedback = {

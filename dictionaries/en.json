@@ -3,7 +3,9 @@
     "home": "Home",
     "about": "About Us",
     "blog": "Party Ideas",
-    "contact": "Contact"
+    "contact": "Contact",
+    "products": "Products",
+    "cart": "Cart"
   },
   "home": {
     "title": "Welcome to BoboParty",
@@ -80,5 +82,24 @@
     "openingHours": "Opening Hours",
     "contact": "Contact Us",
     "whatsapp": "WhatsApp"
+  },
+  "products": {
+    "title": "Products",
+    "subtitle": "Browse our latest party supplies and decorations",
+    "categoriesTitle": "Shop by Category",
+    "categoriesSubtitle": "Explore themed collections curated in Shopify",
+    "allProductsTitle": "All Products",
+    "categoryLabel": "Category",
+    "categoryNotFound": "Category not found.",
+    "productNotFound": "Product not found."
+  },
+  "cart": {
+    "title": "Your Cart",
+    "subtitle": "Review your items before checkout"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "subtitle": "Proceed via Shopify checkout from your cart.",
+    "goToCart": "Back to Cart"
   }
 }
