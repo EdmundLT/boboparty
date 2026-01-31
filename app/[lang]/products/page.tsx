@@ -1,6 +1,7 @@
 import type { Locale } from "@/i18n.config";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getCollections, getProducts } from "@/lib/products";
+import type { Product, ProductCategory } from "@/types";
 import CategoryGrid from "@/components/CategoryGrid";
 import ProductsExplorer from "@/components/ProductsExplorer";
 
@@ -15,8 +16,8 @@ export default async function ProductsPage({
   const dict = await getDictionary(lang);
   const baseUrl = lang === "zh-TW" ? "" : "/en";
 
-  let collections = [];
-  let products = [];
+  let collections: ProductCategory[] = [];
+  let products: Product[] = [];
   let errorMessage: string | null = null;
 
   try {
