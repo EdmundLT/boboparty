@@ -50,14 +50,19 @@ const mapProduct = (product: ShopifyProduct, category?: ProductCategory): Produc
     description: product.description,
     imageUrls,
     stockStatus: product.availableForSale ? "in_stock" : "out_of_stock",
+    defaultVariantId: firstVariant?.id,
   };
 };
 
 const mapCollection = (collection: ShopifyCollection): ProductCategory => ({
+  id: collection.id,
   slug: collection.handle,
+  handle: collection.handle,
+  name: collection.title,
   displayName: collection.title,
   imageUrl: collection.image?.url,
   description: collection.description || undefined,
+  emoji: undefined, // Can be added later from metadata
 });
 
 const PRODUCTS_QUERY = `

@@ -17,6 +17,16 @@
       "cta": "立即查看",
       "contactUs": "關於我們"
     },
+    "featured": {
+      "title": "精選商品",
+      "subtitle": "為您精心挑選的派對用品",
+      "viewAll": "查看所有商品"
+    },
+    "categories": {
+      "title": "商品分類",
+      "subtitle": "為各種場合找到完美商品",
+      "productsCount": "立即選購"
+    },
     "showcase": {
       "title": "精選佈置案例",
       "subtitle": "查看我們的專業派對佈置作品",
@@ -82,6 +92,16 @@
     "openingHours": "營業時間",
     "contact": "聯絡我們",
     "whatsapp": "WhatsApp"
+  },
+  "trust": {
+    "freeShipping": "訂單滿$500免運費",
+    "securePayment": "100%安全支付",
+    "easyReturns": "輕鬆退換貨"
+  },
+  "search": {
+    "placeholder": "搜尋派對用品...",
+    "noResults": "找不到產品",
+    "searching": "搜尋中..."
   },
   "products": {
     "title": "產品",

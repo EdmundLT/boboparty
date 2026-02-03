@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Product } from "@/types";
+import QuickAddButton from "@/components/QuickAddButton";
 
 type ProductCardProps = {
   product: Product;
@@ -20,35 +21,40 @@ export default function ProductCard({ product, baseUrl }: ProductCardProps) {
   return (
     <Link
       href={`${baseUrl}/product/${product.handle}`}
-      className="group rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden"
+      className="group rounded-lg sm:rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-lg active:scale-95 transition-all overflow-hidden"
     >
-      <div className="relative h-44 w-full bg-gray-100 sm:h-56">
+      <div className="relative h-36 sm:h-48 lg:h-56 w-full bg-gradient-to-br from-gray-100 to-gray-50">
         {imageUrl ? (
           <Image
             src={imageUrl}
             alt={product.name}
             fill
-            className="object-cover group-hover:scale-105 transition-transform"
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
-          <div className="flex h-full items-center justify-center text-gray-400 text-sm">
+          <div className="flex h-full items-center justify-center text-gray-400 text-xs sm:text-sm">
             No image
           </div>
         )}
         {product.stockStatus === "out_of_stock" ? (
-          <div className="absolute top-3 left-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-gray-600">
+          <div className="absolute top-2 left-2 sm:top-3 sm:left-3 rounded-full bg-white/95 backdrop-blur-sm px-2 py-1 sm:px-3 text-xs font-semibold text-gray-700 shadow-sm">
             Out of stock
           </div>
         ) : null}
+        {product.stockStatus === "in_stock" && product.defaultVariantId ? (
+          <div className="hidden lg:block">
+            <QuickAddButton merchandiseId={product.defaultVariantId} productName={product.name} />
+          </div>
+        ) : null}
       </div>
-      <div className="p-4 space-y-2">
-        <div className="flex items-start justify-between gap-2">
-          <h3 className="font-semibold text-gray-900 line-clamp-2">{product.name}</h3>
-          <span className="text-sm font-semibold text-blue-600">{formatPrice(product.price)}</span>
+      <div className="p-3 sm:p-4 space-y-1 sm:space-y-2">
+        <h3 className="text-xs sm:text-sm lg:text-base font-semibold text-gray-900 line-clamp-2 leading-snug">{product.name}</h3>
+        <div className="flex items-center justify-between">
+          <span className="text-sm sm:text-base lg:text-lg font-bold text-blue-600">{formatPrice(product.price)}</span>
+          {product.stockStatus === "in_stock" ? (
+            <span className="text-xs text-green-600 font-medium">● In stock</span>
+          ) : null}
         </div>
-        <p className="text-xs text-gray-500">
-          {product.stockStatus === "in_stock" ? "In stock" : "Out of stock"}
-        </p>
       </div>
     </Link>
   );

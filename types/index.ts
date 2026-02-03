@@ -5,10 +5,14 @@ export type ShopLocation = {
 }
 
 export type ProductCategory = {
+  id: string;
   slug: string;
+  handle: string;
+  name: string;
   displayName: string;
   imageUrl?: string;
   description?: string;
+  emoji?: string;
 }
 
 export type Product = {
@@ -20,6 +24,7 @@ export type Product = {
   description: string;
   imageUrls: string[];
   stockStatus: "in_stock" | "out_of_stock";
+  defaultVariantId?: string;
 }
 
 export type Money = {

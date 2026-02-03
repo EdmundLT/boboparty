@@ -17,6 +17,16 @@
       "cta": "Explore Now",
       "contactUs": "About Us"
     },
+    "featured": {
+      "title": "Featured Products",
+      "subtitle": "Handpicked favorites for your perfect celebration",
+      "viewAll": "View All Products"
+    },
+    "categories": {
+      "title": "Shop by Category",
+      "subtitle": "Find exactly what you need for any occasion",
+      "productsCount": "Shop now"
+    },
     "showcase": {
       "title": "Featured Decoration Showcase",
       "subtitle": "View our professional party decoration works",
@@ -82,6 +92,16 @@
     "openingHours": "Opening Hours",
     "contact": "Contact Us",
     "whatsapp": "WhatsApp"
+  },
+  "trust": {
+    "freeShipping": "Free Shipping on Orders Over $500",
+    "securePayment": "100% Secure Payment",
+    "easyReturns": "Easy Returns & Exchanges"
+  },
+  "search": {
+    "placeholder": "Search for party supplies...",
+    "noResults": "No products found",
+    "searching": "Searching..."
   },
   "products": {
     "title": "Products",
