@@ -1,6 +1,25 @@
 import type { Locale } from "@/i18n.config";
+import type { Metadata } from "next";
 import { getDictionary } from "@/lib/get-dictionary";
 import CartClient from "@/components/CartClient";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = (await params) as { lang: Locale };
+  const dict = await getDictionary(lang);
+
+  return {
+    title: dict.cart.title,
+    description: dict.cart.subtitle,
+    robots: {
+      index: false,
+      follow: true,
+    },
+  };
+}
 
 export default async function CartPage({
   params,

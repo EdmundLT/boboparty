@@ -13,6 +13,10 @@ export type ProductCategory = {
   imageUrl?: string;
   description?: string;
   emoji?: string;
+  seo?: {
+    title?: string;
+    description?: string;
+  };
 }
 
 export type Product = {
@@ -25,6 +29,10 @@ export type Product = {
   imageUrls: string[];
   stockStatus: "in_stock" | "out_of_stock";
   defaultVariantId?: string;
+  seo?: {
+    title?: string;
+    description?: string;
+  };
 }
 
 export type Money = {

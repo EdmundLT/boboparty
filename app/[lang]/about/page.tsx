@@ -1,8 +1,34 @@
 import { getDictionary } from "@/lib/get-dictionary";
 import type { Locale } from "@/i18n.config";
+import type { Metadata } from "next";
 import StoreInfo from "@/components/StoreInfo";
 import { SHOP_LOCATIONS } from "@/data/stores";
 import Image from "next/image";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = (await params) as { lang: Locale };
+  const dict = await getDictionary(lang);
+
+  return {
+    title: dict.about.title,
+    description: dict.about.subtitle,
+    openGraph: {
+      title: dict.about.title,
+      description: dict.about.subtitle,
+      type: "website",
+      locale: lang === "zh-TW" ? "zh_TW" : "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.about.title,
+      description: dict.about.subtitle,
+    },
+  };
+}
 
 export default async function AboutPage({
   params,

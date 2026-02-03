@@ -1,7 +1,32 @@
 import { getDictionary } from "@/lib/get-dictionary";
 import type { Locale } from "@/i18n.config";
+import type { Metadata } from "next";
 import { getBlogPosts } from "@/lib/blogs";
 import BlogCard from "@/components/BlogCard";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = (await params) as { lang: Locale };
+  const dict = await getDictionary(lang);
+
+  return {
+    title: dict.blog.title,
+    description: dict.blog.subtitle,
+    openGraph: {
+      title: dict.blog.title,
+      description: dict.blog.subtitle,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.blog.title,
+      description: dict.blog.subtitle,
+    },
+  };
+}
 
 export default async function BlogPage({
   params,

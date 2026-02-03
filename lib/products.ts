@@ -26,6 +26,10 @@ type ShopifyProduct = {
   availableForSale: boolean;
   images: { edges: { node: ShopifyImage }[] };
   variants: { edges: { node: ShopifyVariant }[] };
+  seo: {
+    title: string | null;
+    description: string | null;
+  };
 };
 
 type ShopifyCollection = {
@@ -34,6 +38,10 @@ type ShopifyCollection = {
   handle: string;
   description: string;
   image: ShopifyImage | null;
+  seo: {
+    title: string | null;
+    description: string | null;
+  };
 };
 
 const mapProduct = (product: ShopifyProduct, category?: ProductCategory): Product => {
@@ -51,6 +59,10 @@ const mapProduct = (product: ShopifyProduct, category?: ProductCategory): Produc
     imageUrls,
     stockStatus: product.availableForSale ? "in_stock" : "out_of_stock",
     defaultVariantId: firstVariant?.id,
+    seo: {
+      title: product.seo.title || undefined,
+      description: product.seo.description || undefined,
+    },
   };
 };
 
@@ -63,6 +75,10 @@ const mapCollection = (collection: ShopifyCollection): ProductCategory => ({
   imageUrl: collection.image?.url,
   description: collection.description || undefined,
   emoji: undefined, // Can be added later from metadata
+  seo: {
+    title: collection.seo.title || undefined,
+    description: collection.seo.description || undefined,
+  },
 });
 
 const PRODUCTS_QUERY = `
@@ -75,6 +91,10 @@ const PRODUCTS_QUERY = `
           handle
           description
           availableForSale
+          seo {
+            title
+            description
+          }
           images(first: 6) {
             edges {
               node {
@@ -111,6 +131,10 @@ const COLLECTIONS_QUERY = `
           title
           handle
           description
+          seo {
+            title
+            description
+          }
           image {
             url
             altText
@@ -128,6 +152,10 @@ const COLLECTION_WITH_PRODUCTS_QUERY = `
       title
       handle
       description
+      seo {
+        title
+        description
+      }
       image {
         url
         altText
@@ -140,6 +168,10 @@ const COLLECTION_WITH_PRODUCTS_QUERY = `
             handle
             description
             availableForSale
+            seo {
+              title
+              description
+            }
             images(first: 6) {
               edges {
                 node {
@@ -176,6 +208,10 @@ const PRODUCT_BY_HANDLE_QUERY = `
       handle
       description
       availableForSale
+      seo {
+        title
+        description
+      }
       images(first: 10) {
         edges {
           node {

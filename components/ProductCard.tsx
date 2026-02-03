@@ -27,7 +27,7 @@ export default function ProductCard({ product, baseUrl, dict }: ProductCardProps
 
   return (
     <Link
-      href={`${baseUrl}/product/${product.handle}`}
+      href={`${baseUrl}/products/${product.handle}`}
       className="group rounded-lg sm:rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-lg active:scale-95 transition-all overflow-hidden"
     >
       <div className="relative h-36 sm:h-48 lg:h-56 w-full bg-gradient-to-br from-gray-100 to-gray-50">

@@ -1,4 +1,5 @@
 import type { Locale } from "@/i18n.config";
+import type { Metadata } from "next";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getCollections, getProducts } from "@/lib/products";
 import type { Product, ProductCategory } from "@/types";
@@ -6,6 +7,30 @@ import CategoryGrid from "@/components/CategoryGrid";
 import ProductsExplorer from "@/components/ProductsExplorer";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = (await params) as { lang: Locale };
+  const dict = await getDictionary(lang);
+
+  return {
+    title: dict.products.title,
+    description: dict.products.subtitle,
+    openGraph: {
+      title: dict.products.title,
+      description: dict.products.subtitle,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.products.title,
+      description: dict.products.subtitle,
+    },
+  };
+}
 
 export default async function ProductsPage({
   params,

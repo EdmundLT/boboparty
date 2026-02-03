@@ -131,7 +131,7 @@ export default function SearchModal({ baseUrl, dict }: SearchModalProps) {
               {results.map((product) => (
                 <Link
                   key={product.id}
-                  href={`${baseUrl}/product/${product.handle}`}
+                  href={`${baseUrl}/products/${product.handle}`}
                   onClick={() => setIsOpen(false)}
                   className="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition-colors"
                 >

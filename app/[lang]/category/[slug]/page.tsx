@@ -1,9 +1,56 @@
 import type { Locale } from "@/i18n.config";
+import type { Metadata } from "next";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getCollectionWithProducts } from "@/lib/products";
 import ProductGrid from "@/components/ProductGrid";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string; slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  
+  try {
+    const data = await getCollectionWithProducts(slug);
+    
+    if (!data) {
+      return {
+        title: "Category Not Found",
+        description: "The category you are looking for could not be found.",
+      };
+    }
+
+    const { collection, products } = data;
+    const seoTitle = collection.seo?.title || collection.displayName;
+    const seoDescription = collection.seo?.description || collection.description || `Shop ${collection.displayName} products`;
+    const imageUrl = collection.imageUrl || products[0]?.imageUrls[0];
+
+    return {
+      title: seoTitle,
+      description: seoDescription,
+      openGraph: {
+        title: seoTitle,
+        description: seoDescription,
+        images: imageUrl ? [{ url: imageUrl, alt: collection.displayName }] : [],
+        type: "website",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: seoTitle,
+        description: seoDescription,
+        images: imageUrl ? [imageUrl] : [],
+      },
+    };
+  } catch (error) {
+    return {
+      title: "Category Error",
+      description: "Unable to load category information.",
+    };
+  }
+}
 
 export default async function CategoryPage({
   params,

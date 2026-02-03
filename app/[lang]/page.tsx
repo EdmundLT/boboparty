@@ -1,5 +1,6 @@
 import { getDictionary } from "@/lib/get-dictionary";
 import type { Locale } from "@/i18n.config";
+import type { Metadata } from "next";
 import HeroSection from "@/components/HeroSection";
 import TrustBanner from "@/components/TrustBanner";
 import FeaturedProducts from "@/components/FeaturedProducts";
@@ -9,6 +10,31 @@ import StoreInfo from "@/components/StoreInfo";
 import { getProducts, getCollections } from "@/lib/products";
 import { SHOP_LOCATIONS } from "@/data/stores";
 import { INSTAGRAM_FEATURED_POSTS } from "@/data/instagram";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = (await params) as { lang: Locale };
+  const dict = await getDictionary(lang);
+
+  return {
+    title: dict.home.title,
+    description: dict.home.description,
+    openGraph: {
+      title: dict.home.title,
+      description: dict.home.description,
+      type: "website",
+      locale: lang === "zh-TW" ? "zh_TW" : "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.home.title,
+      description: dict.home.description,
+    },
+  };
+}
 
 export default async function Home({
   params,
