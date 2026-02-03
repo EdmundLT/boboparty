@@ -46,21 +46,17 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  console.log("POST /api/shopify/cart - Request received");
   let body: CartRequestBody;
 
   try {
     body = (await request.json()) as CartRequestBody;
-    console.log("Request body:", { cartId: body.cartId, lineCount: body.lines?.length });
   } catch {
     return jsonError("Invalid JSON body.");
   }
 
   try {
     if (!body.cartId) {
-      console.log("No cart ID provided, creating new cart");
       const cart = await createCart(body.lines);
-      console.log("New cart created:", cart.id);
       return NextResponse.json({ cart });
     }
 
@@ -68,19 +64,14 @@ export async function POST(request: Request) {
       return jsonError("Missing cart lines.");
     }
 
-    console.log("Adding lines to existing cart:", body.cartId);
     try {
       const cart = await addCartLines(body.cartId, body.lines);
-      console.log("Lines added successfully");
       return NextResponse.json({ cart });
     } catch (addError) {
       // If cart doesn't exist (expired or invalid), create a new one
       const errorMessage = addError instanceof Error ? addError.message : "";
-      console.log("Error adding to cart:", errorMessage);
       if (errorMessage.includes("不存在") || errorMessage.toLowerCase().includes("not found") || errorMessage.toLowerCase().includes("does not exist")) {
-        console.log("Cart expired or not found, creating new cart");
         const cart = await createCart(body.lines);
-        console.log("New cart created after expiry:", cart.id);
         return NextResponse.json({ cart });
       }
       throw addError;

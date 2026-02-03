@@ -17,6 +17,13 @@ type Variant = {
 type ProductPurchaseProps = {
   variants: Variant[];
   onAdded?: (cart: Cart) => void;
+  dict?: {
+    addToCart: string;
+    adding: string;
+    added: string;
+    outOfStock: string;
+    addedToCart: string;
+  };
 };
 
 const formatPrice = (amount: string, currencyCode: string) =>
@@ -26,7 +33,7 @@ const formatPrice = (amount: string, currencyCode: string) =>
     maximumFractionDigits: 0,
   }).format(Number(amount));
 
-export default function ProductPurchase({ variants, onAdded }: ProductPurchaseProps) {
+export default function ProductPurchase({ variants, onAdded, dict }: ProductPurchaseProps) {
   const initialVariant = variants[0];
   const [selectedId, setSelectedId] = useState(initialVariant?.id ?? "");
 
@@ -72,6 +79,7 @@ export default function ProductPurchase({ variants, onAdded }: ProductPurchasePr
         onAdded={onAdded}
         quantity={1}
         disabled={!selectedVariant.availableForSale}
+        dict={dict}
       />
     </div>
   );

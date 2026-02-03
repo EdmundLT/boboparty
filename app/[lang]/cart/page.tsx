@@ -9,6 +9,7 @@ export default async function CartPage({
 }) {
   const { lang } = (await params) as { lang: Locale };
   const dict = await getDictionary(lang);
+  const baseUrl = lang === "zh-TW" ? "" : "/en";
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -20,7 +21,7 @@ export default async function CartPage({
       </section>
 
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <CartClient />
+        <CartClient baseUrl={baseUrl} dict={dict.cart} />
       </section>
     </div>
   );

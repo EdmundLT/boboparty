@@ -15,9 +15,16 @@ type Variant = {
 type ProductDetailProps = {
   product: Product;
   variants: Variant[];
+  dict?: {
+    addToCart: string;
+    adding: string;
+    added: string;
+    outOfStock: string;
+    addedToCart: string;
+  };
 };
 
-export default function ProductDetail({ product, variants }: ProductDetailProps) {
+export default function ProductDetail({ product, variants, dict }: ProductDetailProps) {
   const primaryImage = product.imageUrls[0];
 
   return (
@@ -60,7 +67,7 @@ export default function ProductDetail({ product, variants }: ProductDetailProps)
         <p className="text-gray-600 whitespace-pre-line">{product.description}</p>
 
         <div className="sticky bottom-0 bg-white py-4 border-t border-gray-200 lg:static lg:border-none lg:py-0">
-          <ProductPurchase variants={variants} />
+          <ProductPurchase variants={variants} dict={dict} />
         </div>
       </div>
     </div>

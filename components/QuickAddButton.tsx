@@ -7,11 +7,24 @@ import { showToast } from "@/components/Toast";
 type QuickAddButtonProps = {
   merchandiseId: string;
   productName: string;
+  dict?: {
+    quickAdd: string;
+    adding: string;
+    addedToCart: string;
+  };
 };
 
 const CART_ID_KEY = "boboparty_cart_id";
 
-export default function QuickAddButton({ merchandiseId, productName }: QuickAddButtonProps) {
+export default function QuickAddButton({ 
+  merchandiseId, 
+  productName,
+  dict = {
+    quickAdd: "快速加入",
+    adding: "加入中...",
+    addedToCart: "已加入購物車！",
+  },
+}: QuickAddButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleQuickAdd = async (e: React.MouseEvent) => {
@@ -38,7 +51,7 @@ export default function QuickAddButton({ merchandiseId, productName }: QuickAddB
 
       localStorage.setItem(CART_ID_KEY, payload.cart.id);
       window.dispatchEvent(new Event("cart-updated"));
-      showToast(`${productName} added to cart!`, "success");
+      showToast(`${productName} ${dict.addedToCart}`, "success");
     } catch (error) {
       const message = error instanceof Error ? error.message : "Unable to add to cart.";
       showToast(message, "error");
@@ -77,10 +90,10 @@ export default function QuickAddButton({ merchandiseId, productName }: QuickAddB
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
             ></path>
           </svg>
-          Adding...
+          {dict.adding}
         </span>
       ) : (
-        "Quick Add"
+        dict.quickAdd
       )}
     </button>
   );

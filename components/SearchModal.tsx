@@ -52,12 +52,16 @@ export default function SearchModal({ baseUrl, dict }: SearchModalProps) {
 
     const debounce = setTimeout(async () => {
       setIsSearching(true);
-      // TODO: Implement search API endpoint
-      // For now, just clear results after delay
-      setTimeout(() => {
+      try {
+        const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+        const data = await response.json();
+        setResults(data.results || []);
+      } catch (error) {
+        console.error("Search error:", error);
         setResults([]);
+      } finally {
         setIsSearching(false);
-      }, 500);
+      }
     }, 300);
 
     return () => clearTimeout(debounce);
@@ -142,7 +146,13 @@ export default function SearchModal({ baseUrl, dict }: SearchModalProps) {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-gray-900 truncate">{product.name}</p>
-                    <p className="text-sm text-blue-600 font-semibold">${product.price}</p>
+                    <p className="text-sm text-blue-600 font-semibold">
+                      {new Intl.NumberFormat("en-HK", {
+                        style: "currency",
+                        currency: "HKD",
+                        maximumFractionDigits: 0,
+                      }).format(product.price)}
+                    </p>
                   </div>
                 </Link>
               ))}

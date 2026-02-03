@@ -21,6 +21,13 @@ type ProductsExplorerProps = {
       resetFilters: string;
       resultsLabel: string;
     };
+    cart: {
+      quickAdd: string;
+      adding: string;
+      addedToCart: string;
+      outOfStock: string;
+      inStock: string;
+    };
   };
 };
 
@@ -148,7 +155,7 @@ export default function ProductsExplorer({ products, baseUrl, dict }: ProductsEx
               </div>
             )}
           </div>
-          <ProductGrid products={filteredProducts} baseUrl={baseUrl} />
+          <ProductGrid products={filteredProducts} baseUrl={baseUrl} dict={dict.cart} />
         </div>
       </div>
 

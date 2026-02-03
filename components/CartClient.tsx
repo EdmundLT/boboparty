@@ -4,16 +4,60 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import type { Cart } from "@/types";
 
+type CartDict = {
+  empty: string;
+  emptySubtitle: string;
+  continueShopping: string;
+  orderSummary: string;
+  subtotal: string;
+  shipping: string;
+  shippingCalculated: string;
+  total: string;
+  proceedToCheckout: string;
+  secureCheckout: string;
+  promoCode: string;
+  enterCode: string;
+  apply: string;
+  remove: string;
+  decreaseQuantity: string;
+  increaseQuantity: string;
+};
+
+type CartClientProps = {
+  baseUrl: string;
+  dict?: CartDict;
+};
+
 const CART_ID_KEY = "boboparty_cart_id";
 
 const formatMoney = (amount: string, currencyCode: string) =>
-  new Intl.NumberFormat("en-HK", {
+  new Intl.NumberFormat("zh-HK", {
     style: "currency",
     currency: currencyCode,
     maximumFractionDigits: 0,
   }).format(Number(amount));
 
-export default function CartClient() {
+export default function CartClient({ 
+  baseUrl = "",
+  dict = {
+    empty: "您的購物車是空的",
+    emptySubtitle: "開始購物，將喜歡的商品加入購物車",
+    continueShopping: "繼續購物",
+    orderSummary: "訂單摘要",
+    subtotal: "小計",
+    shipping: "運費",
+    shippingCalculated: "結帳時計算",
+    total: "總計",
+    proceedToCheckout: "前往結帳",
+    secureCheckout: "由 Shopify 提供安全結帳",
+    promoCode: "有促銷代碼？",
+    enterCode: "輸入代碼",
+    apply: "套用",
+    remove: "移除",
+    decreaseQuantity: "減少數量",
+    increaseQuantity: "增加數量",
+  },
+}: CartClientProps) {
   const [cart, setCart] = useState<Cart | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -119,7 +163,33 @@ export default function CartClient() {
   };
 
   if (isLoading) {
-    return <div className="text-gray-500">Loading cart...</div>;
+    return (
+      <div className="flex items-center justify-center py-16">
+        <div className="text-center">
+          <svg
+            className="animate-spin h-12 w-12 text-blue-600 mx-auto mb-4"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokeWidth="4"
+            ></circle>
+            <path
+              className="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+          <p className="text-gray-600 font-medium">Loading your cart...</p>
+        </div>
+      </div>
+    );
   }
 
   if (errorMessage) {
@@ -132,20 +202,53 @@ export default function CartClient() {
 
   if (!cart || cart.lines.length === 0) {
     return (
-      <div className="rounded-xl border border-dashed border-gray-300 bg-white p-10 text-center text-gray-500">
-        Your cart is empty.
+      <div className="rounded-xl border border-dashed border-gray-300 bg-white p-10 sm:p-16 text-center">
+        <div className="text-6xl mb-4">🛒</div>
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">{dict.empty}</h3>
+        <p className="text-gray-600 mb-6">{dict.emptySubtitle}</p>
+        <a
+          href={`${baseUrl}/products`}
+          className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 active:scale-95 transition-all"
+        >
+          {dict.continueShopping}
+        </a>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6 lg:grid lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-8 lg:space-y-0">
-      <div className="space-y-4">
-        {cart.lines.map((line) => (
-          <div
-            key={line.id}
-            className="flex flex-col gap-4 rounded-2xl border border-gray-200 bg-white p-4 sm:flex-row sm:items-center shadow-sm hover:shadow-md transition-shadow"
+    <div className="relative">
+      {isLoading && (
+        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm z-10 flex items-center justify-center rounded-xl">
+          <svg
+            className="animate-spin h-8 w-8 text-blue-600"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
           >
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokeWidth="4"
+            ></circle>
+            <path
+              className="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+        </div>
+      )}
+      <div className="space-y-6 lg:grid lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-8 lg:space-y-0">
+        <div className="space-y-4">
+          {cart.lines.map((line) => (
+            <div
+              key={line.id}
+              className="flex flex-col gap-4 rounded-2xl border border-gray-200 bg-white p-4 sm:flex-row sm:items-center shadow-sm hover:shadow-md transition-shadow"
+            >
             <div className="relative h-24 w-24 flex-shrink-0 rounded-xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50">
               {line.imageUrl ? (
                 <Image src={line.imageUrl} alt={line.productTitle} fill className="object-cover" />
@@ -190,7 +293,7 @@ export default function CartClient() {
                 disabled={isLoading}
                 className="text-sm font-medium text-red-600 hover:text-red-700 hover:underline disabled:opacity-50 transition-colors"
               >
-                Remove
+                {dict.remove}
               </button>
             </div>
           </div>
@@ -198,22 +301,22 @@ export default function CartClient() {
       </div>
 
       <div className="rounded-2xl border border-gray-200 bg-white p-6 space-y-5 h-fit lg:sticky lg:top-24 shadow-sm">
-        <h3 className="text-lg font-semibold text-gray-900">Order Summary</h3>
+        <h3 className="text-lg font-semibold text-gray-900">{dict.orderSummary}</h3>
         
         <div className="space-y-3">
           <div className="flex items-center justify-between text-gray-600">
-            <span className="text-sm">Subtotal</span>
+            <span className="text-sm">{dict.subtotal}</span>
             <span className="font-medium">{formatMoney(cart.cost.subtotal.amount, cart.cost.subtotal.currencyCode)}</span>
           </div>
           <div className="flex items-center justify-between text-gray-600">
-            <span className="text-sm">Shipping</span>
-            <span className="text-sm text-gray-500">Calculated at checkout</span>
+            <span className="text-sm">{dict.shipping}</span>
+            <span className="text-sm text-gray-500">{dict.shippingCalculated}</span>
           </div>
         </div>
         
         <div className="pt-3 border-t border-gray-200">
           <div className="flex items-center justify-between text-lg font-bold text-gray-900">
-            <span>Total</span>
+            <span>{dict.total}</span>
             <span>{formatMoney(cart.cost.total.amount, cart.cost.total.currencyCode)}</span>
           </div>
         </div>
@@ -223,7 +326,7 @@ export default function CartClient() {
             href={cart.checkoutUrl}
             className="flex items-center justify-center gap-2 w-full rounded-xl bg-blue-600 px-6 py-4 text-base text-white font-semibold shadow-lg shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
-            <span>Proceed to Checkout</span>
+            <span>{dict.proceedToCheckout}</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
@@ -233,14 +336,14 @@ export default function CartClient() {
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
             </svg>
-            <span>Secure checkout powered by Shopify</span>
+            <span>{dict.secureCheckout}</span>
           </div>
         </div>
 
         <div className="pt-4 border-t border-gray-200">
           <details className="group">
             <summary className="flex items-center justify-between cursor-pointer text-sm font-medium text-gray-700 hover:text-gray-900">
-              <span>Have a promo code?</span>
+              <span>{dict.promoCode}</span>
               <svg className="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
@@ -248,18 +351,19 @@ export default function CartClient() {
             <div className="mt-3 space-y-2">
               <input
                 type="text"
-                placeholder="Enter code"
+                placeholder={dict.enterCode}
                 className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
               />
               <button
                 type="button"
                 className="w-full rounded-lg border-2 border-gray-200 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 active:scale-95 transition-all"
               >
-                Apply
+                {dict.apply}
               </button>
             </div>
           </details>
         </div>
+      </div>
       </div>
     </div>
   );

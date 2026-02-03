@@ -13,6 +13,13 @@ type FeaturedProductsProps = {
         viewAll: string;
       };
     };
+    cart: {
+      quickAdd: string;
+      adding: string;
+      addedToCart: string;
+      outOfStock: string;
+      inStock: string;
+    };
   };
 };
 
@@ -49,7 +56,7 @@ export default function FeaturedProducts({ products, baseUrl, dict }: FeaturedPr
           <>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
               {displayProducts.map((product) => (
-                <ProductCard key={product.id} product={product} baseUrl={baseUrl} />
+                <ProductCard key={product.id} product={product} baseUrl={baseUrl} dict={dict.cart} />
               ))}
             </div>
 

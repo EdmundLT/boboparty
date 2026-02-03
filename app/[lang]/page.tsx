@@ -31,7 +31,7 @@ export default async function Home({
       <TrustBanner dict={dict} />
 
       {/* Featured Products Section */}
-      <FeaturedProducts products={products} baseUrl={baseUrl} dict={dict} />
+      <FeaturedProducts products={products} baseUrl={baseUrl} dict={{ home: dict.home, cart: dict.cart }} />
 
       {/* Shop by Category Section */}
       <ShopByCategory categories={collections} baseUrl={baseUrl} dict={dict} />

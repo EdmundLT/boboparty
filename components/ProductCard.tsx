@@ -6,16 +6,23 @@ import QuickAddButton from "@/components/QuickAddButton";
 type ProductCardProps = {
   product: Product;
   baseUrl: string;
+  dict?: {
+    quickAdd: string;
+    adding: string;
+    addedToCart: string;
+    outOfStock: string;
+    inStock: string;
+  };
 };
 
 const formatPrice = (price: number) =>
-  new Intl.NumberFormat("en-HK", {
+  new Intl.NumberFormat("zh-HK", {
     style: "currency",
     currency: "HKD",
     maximumFractionDigits: 0,
   }).format(price);
 
-export default function ProductCard({ product, baseUrl }: ProductCardProps) {
+export default function ProductCard({ product, baseUrl, dict }: ProductCardProps) {
   const imageUrl = product.imageUrls[0];
 
   return (
@@ -38,12 +45,16 @@ export default function ProductCard({ product, baseUrl }: ProductCardProps) {
         )}
         {product.stockStatus === "out_of_stock" ? (
           <div className="absolute top-2 left-2 sm:top-3 sm:left-3 rounded-full bg-white/95 backdrop-blur-sm px-2 py-1 sm:px-3 text-xs font-semibold text-gray-700 shadow-sm">
-            Out of stock
+            {dict?.outOfStock || "缺貨"}
           </div>
         ) : null}
         {product.stockStatus === "in_stock" && product.defaultVariantId ? (
           <div className="hidden lg:block">
-            <QuickAddButton merchandiseId={product.defaultVariantId} productName={product.name} />
+            <QuickAddButton 
+              merchandiseId={product.defaultVariantId} 
+              productName={product.name}
+              dict={dict ? { quickAdd: dict.quickAdd, adding: dict.adding, addedToCart: dict.addedToCart } : undefined}
+            />
           </div>
         ) : null}
       </div>
@@ -52,7 +63,7 @@ export default function ProductCard({ product, baseUrl }: ProductCardProps) {
         <div className="flex items-center justify-between">
           <span className="text-sm sm:text-base lg:text-lg font-bold text-blue-600">{formatPrice(product.price)}</span>
           {product.stockStatus === "in_stock" ? (
-            <span className="text-xs text-green-600 font-medium">● In stock</span>
+            <span className="text-xs text-green-600 font-medium">● {dict?.inStock || "有貨"}</span>
           ) : null}
         </div>
       </div>

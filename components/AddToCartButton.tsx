@@ -9,6 +9,13 @@ type AddToCartButtonProps = {
   quantity?: number;
   disabled?: boolean;
   onAdded?: (cart: Cart) => void;
+  dict?: {
+    addToCart: string;
+    adding: string;
+    added: string;
+    outOfStock: string;
+    addedToCart: string;
+  };
 };
 
 const CART_ID_KEY = "boboparty_cart_id";
@@ -18,22 +25,25 @@ export default function AddToCartButton({
   quantity = 1,
   disabled = false,
   onAdded,
+  dict = {
+    addToCart: "加入購物車",
+    adding: "加入中...",
+    added: "已加入！",
+    outOfStock: "缺貨",
+    addedToCart: "已加入購物車！",
+  },
 }: AddToCartButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleAddToCart = async () => {
-    console.log("Add to cart clicked, merchandiseId:", merchandiseId);
     setIsLoading(true);
     setErrorMessage(null);
     setIsSuccess(false);
 
     try {
       const cartId = typeof window !== "undefined" ? localStorage.getItem(CART_ID_KEY) : null;
-      console.log("Current cart ID:", cartId);
-      
-      console.log("Sending request to /api/shopify/cart...");
       const response = await fetch("/api/shopify/cart", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -42,7 +52,6 @@ export default function AddToCartButton({
           lines: [{ merchandiseId, quantity }],
         }),
       });
-      console.log("Response received:", response.status);
 
       const payload = (await response.json()) as { cart?: Cart; error?: string };
       if (!response.ok || !payload.cart) {
@@ -56,7 +65,7 @@ export default function AddToCartButton({
       
       // Show success state
       setIsSuccess(true);
-      showToast("Added to cart!", "success");
+      showToast(dict.addedToCart, "success");
       
       // Reset success state after animation
       setTimeout(() => setIsSuccess(false), 2000);
@@ -105,7 +114,7 @@ export default function AddToCartButton({
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               ></path>
             </svg>
-            <span>Adding...</span>
+            <span>{dict.adding}</span>
           </>
         ) : isSuccess ? (
           <>
@@ -116,12 +125,12 @@ export default function AddToCartButton({
                 clipRule="evenodd"
               />
             </svg>
-            <span>Added!</span>
+            <span>{dict.added}</span>
           </>
         ) : disabled ? (
-          "Out of stock"
+          dict.outOfStock
         ) : (
-          "Add to cart"
+          dict.addToCart
         )}
       </button>
       {errorMessage ? (

@@ -42,7 +42,7 @@ export default async function ProductPage({
             {errorMessage}
           </div>
         ) : null}
-        {data ? <ProductDetail product={data.product} variants={data.variants} /> : null}
+        {data ? <ProductDetail product={data.product} variants={data.variants} dict={dict.cart} /> : null}
       </section>
     </div>
   );
