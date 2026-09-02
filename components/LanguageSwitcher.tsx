@@ -27,15 +27,15 @@ export default function LanguageSwitcher({ currentLang }: { currentLang: Locale 
   }
 
   return (
-    <div className="relative inline-flex items-center bg-gray-100 rounded-xl p-1 shadow-sm">
+    <div className="relative inline-flex items-center rounded-full border border-[#173f5f]/10 bg-white/60 p-1">
       {i18n.locales.map((locale) => (
         <button
           key={locale}
           onClick={() => switchLanguage(locale)}
-          className={`px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-150 ${
+            className={`rounded-full px-3 py-2 text-xs font-bold transition-all duration-150 sm:px-4 sm:text-sm ${
             currentLang === locale
-              ? 'bg-white text-blue-600 shadow-sm'
-              : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+              ? 'bg-[#173f5f] text-white shadow-sm'
+              : 'text-[#66717b] hover:bg-[#f4c95d]/25 hover:text-[#173f5f]'
           }`}
         >
           {locale === 'zh-TW' ? '中文' : 'EN'}

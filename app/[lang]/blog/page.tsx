@@ -39,22 +39,26 @@ export default async function BlogPage({
   const posts = await getBlogPosts(lang);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">{dict.blog.title}</h1>
-          <p className="text-xl text-gray-600">{dict.blog.subtitle}</p>
+    <div className="min-h-screen bg-[#f7f2e9]">
+      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20 lg:px-10">
+        <div className="mb-12 max-w-3xl border-b border-[#173f5f]/15 pb-10">
+          <p className="mb-5 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.24em] text-[#ef6f61]">
+            <span className="h-px w-8 bg-[#ef6f61]" />
+            01 / Party ideas
+          </p>
+          <h1 className="text-5xl font-black tracking-[-0.06em] text-[#173f5f] sm:text-6xl">{dict.blog.title}</h1>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-[#66717b]">{dict.blog.subtitle}</p>
         </div>
 
         {posts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => (
               <BlogCard key={post.slug} post={post} baseUrl={baseUrl} />
             ))}
           </div>
         ) : (
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">{dict.blog.noPosts}</p>
+          <div className="rounded-[1.75rem] border border-dashed border-[#173f5f]/20 bg-white/60 py-16 text-center">
+            <p className="text-lg font-semibold text-[#66717b]">{dict.blog.noPosts}</p>
           </div>
         )}
       </div>

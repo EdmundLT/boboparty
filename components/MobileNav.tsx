@@ -10,8 +10,8 @@ type MobileNavProps = {
       home: string;
       about: string;
       blog: string;
-      products: string;
-      cart: string;
+      services: string;
+      contact: string;
     };
   };
 };
@@ -24,7 +24,7 @@ export default function MobileNav({ baseUrl, dict }: MobileNavProps) {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="md:hidden p-2 text-gray-700 hover:text-blue-600"
+        className="rounded-full border border-[#173f5f]/10 bg-white/60 p-2 text-[#173f5f] hover:bg-white md:hidden"
         aria-label="Open menu"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -38,13 +38,13 @@ export default function MobileNav({ baseUrl, dict }: MobileNavProps) {
             className="absolute inset-0 bg-black bg-opacity-50"
             onClick={() => setIsOpen(false)}
           />
-          <div className="absolute top-0 right-0 bottom-0 w-64 bg-white shadow-2xl">
-            <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white">
-              <span className="font-semibold text-gray-900">Menu</span>
+          <div className="absolute bottom-0 right-0 top-0 w-72 bg-[#f7f2e9] shadow-2xl">
+            <div className="flex items-center justify-between border-b border-[#173f5f]/10 bg-[#f7f2e9] p-4">
+              <span className="font-black text-[#173f5f]">Menu</span>
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                className="p-2 text-gray-500 hover:text-gray-700 active:bg-gray-100 rounded-lg"
+                className="rounded-full p-2 text-[#66717b] hover:bg-white hover:text-[#173f5f]"
                 aria-label="Close menu"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -52,41 +52,41 @@ export default function MobileNav({ baseUrl, dict }: MobileNavProps) {
                 </svg>
               </button>
             </div>
-            <nav className="p-4 space-y-2 bg-white">
+            <nav className="space-y-2 bg-[#f7f2e9] p-4">
               <Link
                 href={`${baseUrl}/`}
                 onClick={() => setIsOpen(false)}
-                className="block px-4 py-3 text-gray-900 hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium transition-colors active:bg-blue-100"
+                className="block rounded-xl px-4 py-3 font-semibold text-[#173f5f] transition-colors hover:bg-[#f4c95d]/30 active:bg-[#f4c95d]/50"
               >
                 {dict.navigation.home}
               </Link>
               <Link
-                href={`${baseUrl}/products`}
+                href={`${baseUrl}/#services`}
                 onClick={() => setIsOpen(false)}
-                className="block px-4 py-3 text-gray-900 hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium transition-colors active:bg-blue-100"
+                className="block rounded-xl px-4 py-3 font-semibold text-[#173f5f] transition-colors hover:bg-[#f4c95d]/30 active:bg-[#f4c95d]/50"
               >
-                {dict.navigation.products}
+                {dict.navigation.services}
+              </Link>
+              <Link
+                href={`${baseUrl}/#contact`}
+                onClick={() => setIsOpen(false)}
+                className="block rounded-xl px-4 py-3 font-semibold text-[#173f5f] transition-colors hover:bg-[#f4c95d]/30 active:bg-[#f4c95d]/50"
+              >
+                {dict.navigation.contact}
               </Link>
               <Link
                 href={`${baseUrl}/about`}
                 onClick={() => setIsOpen(false)}
-                className="block px-4 py-3 text-gray-900 hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium transition-colors active:bg-blue-100"
+                className="block rounded-xl px-4 py-3 font-semibold text-[#173f5f] transition-colors hover:bg-[#f4c95d]/30 active:bg-[#f4c95d]/50"
               >
                 {dict.navigation.about}
               </Link>
               <Link
                 href={`${baseUrl}/blog`}
                 onClick={() => setIsOpen(false)}
-                className="block px-4 py-3 text-gray-900 hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium transition-colors active:bg-blue-100"
+                className="block rounded-xl px-4 py-3 font-semibold text-[#173f5f] transition-colors hover:bg-[#f4c95d]/30 active:bg-[#f4c95d]/50"
               >
                 {dict.navigation.blog}
-              </Link>
-              <Link
-                href={`${baseUrl}/cart`}
-                onClick={() => setIsOpen(false)}
-                className="block px-4 py-3 text-gray-900 hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium transition-colors active:bg-blue-100"
-              >
-                {dict.navigation.cart}
               </Link>
             </nav>
           </div>

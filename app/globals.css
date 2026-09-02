@@ -1,3 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --paper: #f7f2e9;
+  --paper-deep: #eee5d6;
+  --ink: #17212b;
+  --muted-ink: #66717b;
+  --navy: #173f5f;
+  --coral: #ef6f61;
+  --yellow: #f4c95d;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-feature-settings: "ss01" 1, "cv11" 1;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  content: "";
+  opacity: 0.035;
+  background-image: repeating-linear-gradient(0deg, rgba(23, 63, 95, 0.7) 0 1px, transparent 1px 4px);
+  mix-blend-mode: multiply;
+}
+
+@keyframes fd-rise-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fd-reveal {
+  animation: fd-rise-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.fd-reveal-delay {
+  animation-delay: 120ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fd-reveal { animation: none; }
+}
+
+::selection {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

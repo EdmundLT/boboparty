@@ -3,19 +3,20 @@
     "home": "Home",
     "about": "About Us",
     "blog": "Party Ideas",
+    "services": "Services",
     "contact": "Contact",
     "products": "Products",
     "cart": "Cart"
   },
   "home": {
     "title": "Welcome to BoboParty",
-    "description": "Specializing in party supplies, offering quality balloons, decorations, and party setup services",
+    "description": "A Hong Kong party styling studio creating thoughtful balloon designs, event setups, and memorable celebrations",
     "hero": {
       "title": "Making Every Party a Memorable Experience",
       "subtitle": "Professional Party Supplies & Decoration Services",
-      "description": "BoboParty is a professional party supplies provider in Hong Kong, specializing in balloons, decorations, and party setup services. With three physical stores, we offer a diverse selection of party supplies and are committed to creating unique party experiences for every customer.",
-      "cta": "Explore Now",
-      "contactUs": "About Us"
+      "description": "BoboParty is a Hong Kong party styling studio specializing in balloon art, event decoration, and thoughtful setup services. From intimate birthdays to brand events, our team creates spaces that feel personal, joyful, and ready to be remembered.",
+      "cta": "Explore Our Services",
+      "contactUs": "Meet BoboParty"
     },
     "featured": {
       "title": "Featured Products",
@@ -56,7 +57,7 @@
   },
   "about": {
     "title": "About BoboParty",
-    "subtitle": "Professional party supplies provider in Hong Kong, creating unforgettable party experiences for you",
+    "subtitle": "A Hong Kong party styling team creating joyful spaces and unforgettable moments",
     "ourStory": {
       "title": "Our Story",
       "content1": "Since our establishment, BoboParty has been committed to providing quality party supplies and professional decoration services to Hong Kong residents. We believe every party is unique and deserves careful planning and decoration.",
@@ -94,9 +95,9 @@
     "whatsapp": "WhatsApp"
   },
   "trust": {
-    "freeShipping": "Free Shipping on Orders Over $500",
-    "securePayment": "100% Secure Payment",
-    "easyReturns": "Easy Returns & Exchanges"
+    "freeShipping": "Thoughtful ideas, made for you",
+    "securePayment": "Professional setup, end to end",
+    "easyReturns": "Three Hong Kong locations"
   },
   "search": {
     "placeholder": "Search for party supplies...",

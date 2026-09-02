@@ -21,14 +21,14 @@ export default function ShopByCategory({ categories, baseUrl, dict }: ShopByCate
   const displayCategories = categories.slice(0, 6);
 
   return (
-    <section className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-blue-50/30">
+    <section className="bg-[#e7efee] py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3">
+          <h2 className="mb-3 text-3xl font-black tracking-[-0.04em] text-[#173f5f] sm:text-4xl lg:text-5xl">
             {dict.home.categories.title}
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-base text-[#66717b] sm:text-lg">
             {dict.home.categories.subtitle}
           </p>
         </div>
@@ -81,9 +81,9 @@ export default function ShopByCategory({ categories, baseUrl, dict }: ShopByCate
             ))}
           </div>
         ) : (
-          <div className="text-center py-16 text-gray-500">
+          <div className="py-16 text-center text-[#66717b]">
             <div className="text-6xl mb-4">📂</div>
-            <p className="text-lg">No categories available yet.</p>
+            <p className="text-lg font-semibold">No categories available yet.</p>
           </div>
         )}
       </div>
