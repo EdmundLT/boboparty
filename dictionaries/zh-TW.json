@@ -3,19 +3,20 @@
     "home": "首頁",
     "about": "關於我們",
     "blog": "派對資訊",
+    "services": "服務內容",
     "contact": "聯絡我們",
     "products": "產品",
     "cart": "購物車"
   },
   "home": {
     "title": "歡迎來到 BoboParty",
-    "description": "專營派對用品，提供優質氣球、裝飾及派對佈置服務",
+    "description": "香港派對佈置團隊，以氣球藝術、活動設計和現場服務打造值得記住的時刻",
     "hero": {
       "title": "讓每個派對都成為難忘回憶",
       "subtitle": "專業派對用品及佈置服務",
-      "description": "BoboParty 是香港專業派對用品供應商，專營各類氣球、裝飾及派對佈置服務。我們擁有三間實體店舖，為您提供多元化的派對用品選擇，致力為每位顧客打造獨一無二的派對體驗。",
-      "cta": "立即查看",
-      "contactUs": "關於我們"
+      "description": "BoboParty 是香港派對佈置團隊，專注於氣球藝術、活動設計及一站式現場佈置服務。從親密的生日聚會到品牌活動，我們以你的故事為起點，打造獨一無二、值得留下的空間。",
+      "cta": "了解我們的服務",
+      "contactUs": "認識 BoboParty"
     },
     "featured": {
       "title": "精選商品",
@@ -56,7 +57,7 @@
   },
   "about": {
     "title": "關於 BoboParty",
-    "subtitle": "香港專業派對用品供應商，為您打造難忘的派對體驗",
+    "subtitle": "香港派對佈置團隊，為你打造充滿個性、值得記住的歡樂時刻",
     "ourStory": {
       "title": "我們的故事",
       "content1": "BoboParty 成立至今，一直致力為香港市民提供優質的派對用品及專業佈置服務。我們深信每個派對都是獨一無二的，值得用心策劃和佈置。",
@@ -94,9 +95,9 @@
     "whatsapp": "WhatsApp"
   },
   "trust": {
-    "freeShipping": "訂單滿$500免運費",
-    "securePayment": "100%安全支付",
-    "easyReturns": "輕鬆退換貨"
+    "freeShipping": "為你度身訂造的創意",
+    "securePayment": "由構思到佈置一站完成",
+    "easyReturns": "香港三間實體店舖"
   },
   "search": {
     "placeholder": "搜尋派對用品...",

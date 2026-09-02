@@ -54,7 +54,7 @@ export default function CartIcon({ baseUrl }: CartIconProps) {
   return (
     <Link
       href={`${baseUrl}/cart`}
-      className="relative p-2 text-gray-700 hover:text-blue-600 transition-colors"
+      className="relative rounded-full border border-[#173f5f]/10 bg-white/60 p-2 text-[#173f5f] transition-colors hover:border-[#173f5f]/30 hover:bg-white"
       aria-label={`Shopping cart with ${itemCount} items`}
     >
       <svg
@@ -72,7 +72,7 @@ export default function CartIcon({ baseUrl }: CartIconProps) {
       </svg>
       {itemCount > 0 && (
         <span
-          className={`absolute -top-1 -right-1 h-5 w-5 rounded-full bg-blue-600 text-white text-xs font-bold flex items-center justify-center shadow-lg ${
+            className={`absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#ef6f61] text-xs font-bold text-white shadow-lg ${
             isAnimating ? "animate-bounce" : ""
           }`}
         >
