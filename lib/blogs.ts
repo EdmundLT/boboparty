@@ -1,3 +1,4 @@
+import { pageMetadata } from '@/lib/seo'
 import { BlogPost } from '@/types'
 import type { Locale } from '@/i18n.config'
 
@@ -43,6 +44,7 @@ export async function getBlogPost(slug: string, locale: Locale): Promise<BlogPos
 
 export function generateBlogMetadata(post: BlogPost, locale: Locale) {
   return {
+    ...pageMetadata(locale, `/blog/${post.slug}`, post.seo?.metaTitle || post.title, post.seo?.metaDescription || post.excerpt),
     title: post.seo?.metaTitle || post.title,
     description: post.seo?.metaDescription || post.excerpt,
     keywords: post.seo?.keywords?.join(', '),

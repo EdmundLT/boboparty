@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { i18n } from './i18n.config'
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
@@ -10,7 +9,9 @@ export function middleware(request: NextRequest) {
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
     pathname === '/favicon.ico' ||
-    /\.(jpg|jpeg|png|gif|svg|ico|webp|css|js|woff|woff2|ttf|eot)$/i.test(pathname)
+    pathname === '/sitemap.xml' ||
+    pathname === '/robots.txt' ||
+    /\.(jpg|jpeg|png|gif|svg|ico|webp|mp4|webm|mov|vtt|css|js|woff|woff2|ttf|eot)$/i.test(pathname)
 
   if (shouldSkip) {
     return NextResponse.next()
@@ -21,18 +22,17 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // Check if pathname starts with /zh-TW and redirect to root
+  // Allow the internal locale route. Canonical metadata points to the public root URL.
   if (pathname.startsWith('/zh-TW/')) {
-    const newPath = pathname.replace('/zh-TW', '')
-    return NextResponse.redirect(new URL(newPath || '/', request.url))
+    return NextResponse.next()
   }
 
   if (pathname === '/zh-TW') {
-    return NextResponse.redirect(new URL('/', request.url))
+    return NextResponse.next()
   }
 
   // Rewrite root paths to /zh-TW internally (without changing URL)
-  return NextResponse.rewrite(new URL(`/zh-TW${pathname}`, request.url))
+  return NextResponse.rewrite(new URL(pathname === '/' ? '/zh-TW' : `/zh-TW${pathname}`, request.url))
 }
 
 export const config = {

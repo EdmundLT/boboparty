@@ -1,5 +1,5 @@
 import type { ShopLocation } from '@/types'
-import { CONTACT_WHATSAPP } from '@/data/stores'
+import { WHATSAPP_URL, CONTACT_WHATSAPP } from '@/data/stores'
 
 type StoreInfoProps = {
   locations: ShopLocation[]
@@ -47,7 +47,7 @@ export default function StoreInfo({ locations, dict }: StoreInfoProps) {
       <div className="rounded-[1.5rem] border border-[#ef6f61]/20 bg-[#ef6f61]/10 p-6">
         <h3 className="mb-4 text-xl font-black text-[#173f5f]">{dict.stores.contact}</h3>
         <a
-          href={`https://wa.me/${CONTACT_WHATSAPP}`}
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-3 group w-fit"

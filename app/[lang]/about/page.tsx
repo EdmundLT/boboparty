@@ -1,8 +1,9 @@
+import { pageMetadata } from '@/lib/seo';
 import { getDictionary } from "@/lib/get-dictionary";
 import type { Locale } from "@/i18n.config";
 import type { Metadata } from "next";
 import StoreInfo from "@/components/StoreInfo";
-import { CONTACT_WHATSAPP, SHOP_LOCATIONS } from "@/data/stores";
+import { WHATSAPP_URL, SHOP_LOCATIONS } from "@/data/stores";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,21 +15,7 @@ export async function generateMetadata({
   const { lang } = (await params) as { lang: Locale };
   const dict = await getDictionary(lang);
 
-  return {
-    title: dict.about.title,
-    description: dict.about.subtitle,
-    openGraph: {
-      title: dict.about.title,
-      description: dict.about.subtitle,
-      type: "website",
-      locale: lang === "zh-TW" ? "zh_TW" : "en_US",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: dict.about.title,
-      description: dict.about.subtitle,
-    },
-  };
+  return pageMetadata(lang, "/about", dict.about.title, dict.about.subtitle);
 }
 
 export default async function AboutPage({
@@ -137,7 +124,7 @@ export default async function AboutPage({
             <h2 className="text-3xl font-black tracking-[-0.04em] sm:text-4xl">{contactLabel}</h2>
             <p className="mt-3 max-w-xl text-sm leading-6 text-white/65">{contactDescription}</p>
           </div>
-          <Link href={`https://wa.me/${CONTACT_WHATSAPP}`} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center justify-center gap-3 rounded-full bg-[#f4c95d] px-7 py-4 text-sm font-black text-[#173f5f] transition hover:-translate-y-0.5 hover:bg-[#f8d879]">
+          <Link href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center justify-center gap-3 rounded-full bg-[#f4c95d] px-7 py-4 text-sm font-black text-[#173f5f] transition hover:-translate-y-0.5 hover:bg-[#f8d879]">
             {isZh ? "WhatsApp 聯絡我們" : "Message us on WhatsApp"}
             <span className="text-lg" aria-hidden="true">↗</span>
           </Link>
@@ -151,7 +138,7 @@ export default async function AboutPage({
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-[#ef6f61]">05 / Find us</p>
               <h2 className="text-4xl font-black tracking-[-0.05em] text-[#173f5f] sm:text-5xl">{dict.about.visitUs}</h2>
             </div>
-            <Link href={`${baseUrl}/#contact`} className="text-sm font-bold text-[#ef6f61] hover:text-[#173f5f]">{isZh ? "需要幫忙？聯絡我們 ↗" : "Need a hand? Contact us ↗"}</Link>
+            <Link href={`${baseUrl}/contact`} className="text-sm font-bold text-[#ef6f61] hover:text-[#173f5f]">{isZh ? "需要幫忙？聯絡我們 ↗" : "Need a hand? Contact us ↗"}</Link>
           </div>
           <StoreInfo locations={SHOP_LOCATIONS} dict={dict} />
         </div>

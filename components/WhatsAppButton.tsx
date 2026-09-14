@@ -1,10 +1,10 @@
 'use client'
 
-import { CONTACT_WHATSAPP } from '@/data/stores'
+import { WHATSAPP_URL } from '@/data/stores'
 
 export default function WhatsAppButton() {
   const handleClick = () => {
-    window.open(`https://wa.me/${CONTACT_WHATSAPP}`, '_blank')
+    window.open(WHATSAPP_URL, '_blank')
   }
 
   return (

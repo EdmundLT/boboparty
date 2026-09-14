@@ -19,3 +19,6 @@ export const SHOP_LOCATIONS: ShopLocation[] = [
 ]
 
 export const CONTACT_WHATSAPP = "85265344590"
+
+export const WHATSAPP_MESSAGE = "你好，我在你們網站 bobopartyhk.com 看到關於派對佈置的資訊，想了解詳情。"
+export const WHATSAPP_URL = `https://api.whatsapp.com/send/?phone=${CONTACT_WHATSAPP}&text=${encodeURIComponent(WHATSAPP_MESSAGE)}`

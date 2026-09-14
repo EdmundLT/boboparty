@@ -40,7 +40,7 @@ export default function HeroSection({ dict, baseUrl }: HeroSectionProps) {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
-              href={`${baseUrl}/#services`}
+              href={`${baseUrl}/services`}
               className="inline-flex items-center justify-center gap-3 rounded-full bg-[#173f5f] px-7 py-4 text-sm font-bold text-white shadow-[0_12px_24px_rgba(23,63,95,0.18)] transition hover:-translate-y-0.5 hover:bg-[#0f2f49] active:translate-y-0"
             >
               {dict.home.hero.cta}

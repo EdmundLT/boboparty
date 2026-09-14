@@ -1,3 +1,4 @@
+import { pageMetadata } from '@/lib/seo';
 import { getDictionary } from "@/lib/get-dictionary";
 import type { Locale } from "@/i18n.config";
 import type { Metadata } from "next";
@@ -12,20 +13,7 @@ export async function generateMetadata({
   const { lang } = (await params) as { lang: Locale };
   const dict = await getDictionary(lang);
 
-  return {
-    title: dict.blog.title,
-    description: dict.blog.subtitle,
-    openGraph: {
-      title: dict.blog.title,
-      description: dict.blog.subtitle,
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: dict.blog.title,
-      description: dict.blog.subtitle,
-    },
-  };
+  return pageMetadata(lang, "/blog", dict.blog.title, dict.blog.subtitle);
 }
 
 export default async function BlogPage({
