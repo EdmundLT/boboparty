@@ -145,11 +145,6 @@ export default async function RootLayout({
                       "/contact",
                       lang === "en" ? "Stores & contact" : "門市聯絡",
                     ],
-                    [
-                      "/products",
-                      lang === "en" ? "Party supplies" : "派對用品",
-                    ],
-                    ["/cart", lang === "en" ? "Cart" : "購物車"],
                   ].map(([path, label]) => (
                     <li key={path}>
                       <Link

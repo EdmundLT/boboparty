@@ -18,19 +18,6 @@ export type ServiceMedia =
       subtitles?: { src: string; language: string; label: string }[];
     });
 
-// Each service has three independent portrait video slots. Replace null with
-// its downloaded /media/services/<service-slug>/<filename>.mp4 when supplied.
-function emptyMedia(): ServiceMedia[] {
-  return [1, 2, 3].map((number) => ({
-    id: `video-${number}`,
-    type: "video",
-    src: null,
-    autoPlay: true,
-    portrait: true,
-    label: { "zh-TW": "現場影片", en: "Celebration film" },
-  }));
-}
-
 export const SERVICE_MEDIA: Record<string, ServiceMedia[]> = {
 "birthday-parties": [
   {
@@ -100,7 +87,86 @@ export const SERVICE_MEDIA: Record<string, ServiceMedia[]> = {
     }
   }
 ],
-"balloon-decoration": emptyMedia(),
+"balloon-decoration": [
+  {
+    "id": "IMG_0121",
+    "type": "image",
+    "src": "/media/services/balloon-decoration/IMG_0121.jpg",
+    "label": {
+      "zh-TW": "紅白嘉年華彩虹投幣攤位設計圖與實景",
+      "en": "Red-and-white carnival coin-toss booth design and installation"
+    },
+    "alt": {
+      "zh-TW": "紅白嘉年華彩虹投幣攤位設計圖與實景",
+      "en": "Red-and-white carnival coin-toss booth design and installation"
+    }
+  },
+  {
+    "id": "IMG_0125",
+    "type": "image",
+    "src": "/media/services/balloon-decoration/IMG_0125.jpg",
+    "label": {
+      "zh-TW": "馬戲團主題背景牆與甜品車設計圖及實景",
+      "en": "Circus backdrop and dessert cart design and installation"
+    },
+    "alt": {
+      "zh-TW": "馬戲團主題背景牆與甜品車設計圖及實景",
+      "en": "Circus backdrop and dessert cart design and installation"
+    }
+  },
+  {
+    "id": "IMG_3555",
+    "type": "image",
+    "src": "/media/services/balloon-decoration/IMG_3555.jpg",
+    "label": {
+      "zh-TW": "粉彩甜品主題百日宴背景與氣球佈置設計及實景",
+      "en": "Pastel dessert-themed baby celebration backdrop and balloons, design and setup"
+    },
+    "alt": {
+      "zh-TW": "粉彩甜品主題百日宴背景與氣球佈置設計及實景",
+      "en": "Pastel dessert-themed baby celebration backdrop and balloons, design and setup"
+    }
+  },
+  {
+    "id": "IMG_5583",
+    "type": "image",
+    "src": "/media/services/balloon-decoration/IMG_5583.jpg",
+    "label": {
+      "zh-TW": "紅藍金馬戲團生日背景牆設計與氣球拱門實景",
+      "en": "Red, navy and gold circus birthday backdrop design and balloon installation"
+    },
+    "alt": {
+      "zh-TW": "紅藍金馬戲團生日背景牆設計與氣球拱門實景",
+      "en": "Red, navy and gold circus birthday backdrop design and balloon installation"
+    }
+  },
+  {
+    "id": "IMG_3154",
+    "type": "image",
+    "src": "/media/services/balloon-decoration/IMG_3154.jpg",
+    "label": {
+      "zh-TW": "藍白寶寶主題百日宴訂製背景設計圖與實景",
+      "en": "Blue-and-white baby celebration custom backdrop design and setup"
+    },
+    "alt": {
+      "zh-TW": "藍白寶寶主題百日宴訂製背景設計圖與實景",
+      "en": "Blue-and-white baby celebration custom backdrop design and setup"
+    }
+  },
+  {
+    "id": "IMG_5871",
+    "type": "image",
+    "src": "/media/services/balloon-decoration/IMG_5871.jpg",
+    "label": {
+      "zh-TW": "粉紫狐狸主題百日宴背景牆與氣球設計實景",
+      "en": "Pink and lilac fox-themed baby celebration backdrop design and setup"
+    },
+    "alt": {
+      "zh-TW": "粉紫狐狸主題百日宴背景牆與氣球設計實景",
+      "en": "Pink and lilac fox-themed baby celebration backdrop design and setup"
+    }
+  }
+],
 "baby-celebrations": [
   {
     "id": "DM9Fy6wTxUk",
@@ -204,7 +270,7 @@ export const SERVICE_MEDIA: Record<string, ServiceMedia[]> = {
     }
   }
 ],
-"diy-party-supplies": emptyMedia(),
+
 "gender-reveal": [
   {
     "id": "DMwgrOQyXZE",

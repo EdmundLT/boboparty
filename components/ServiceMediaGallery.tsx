@@ -14,6 +14,7 @@ export default function ServiceMediaGallery({
   const items = SERVICE_MEDIA[slug] ?? [];
   const zh = lang === "zh-TW";
   const portraitVideos = items.length > 0 && items.every(item => item.type === "video" && item.portrait);
+  const imageGallery = items.length > 0 && items.every(item => item.type === "image" && item.src);
   if (!items.length) return null;
 
   return (
@@ -34,12 +35,16 @@ export default function ServiceMediaGallery({
               {zh ? "從畫面，感受派對。" : "See the celebration take shape."}
             </h2>
           </div>
-          {!portraitVideos && <p className="text-sm leading-6 text-[#66717b]">
+          {!portraitVideos && !imageGallery && <p className="text-sm leading-6 text-[#66717b]">
             {title} · {zh ? "圖像與影片" : "Photos & films"}
           </p>}
         </div>
         <div className={portraitVideos ? "mx-auto grid w-full max-w-3xl grid-cols-3 gap-2 sm:gap-4" : "grid gap-5 md:grid-cols-2 lg:grid-cols-3"}>
-          {items.map((item, index) => item.type === "instagram" ? (
+          {items.map((item, index) => imageGallery && item.type === "image" && item.src ? (
+            <figure key={item.id} className="min-w-0 overflow-hidden rounded-2xl border border-[#173f5f]/10 bg-white">
+              <Image src={item.src} alt={item.alt[lang]} width={1536} height={2730} sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw" className="h-auto w-full" />
+            </figure>
+          ) : item.type === "instagram" ? (
             <figure key={item.id} className="min-w-0">
               <div className="overflow-hidden rounded-3xl border border-[#173f5f]/15 bg-white">
                 <iframe

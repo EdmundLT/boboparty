@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/i18n.config";
-import services from "@/data/services.json";
+import ServiceDropdown from "@/components/ServiceDropdown";
 export default function SiteNavigation({ lang }: { lang: Locale }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -39,7 +39,7 @@ export default function SiteNavigation({ lang }: { lang: Locale }) {
         aria-label={zh ? "主要導覽" : "Main navigation"}
         className="hidden items-center gap-1 xl:flex"
       >
-        {links.map(([path, label]) => (
+        {links.map(([path, label]) => path === "/services" ? <ServiceDropdown key={path} lang={lang} /> : (
           <Link
             key={path}
             href={`${base}${path}`}
@@ -73,45 +73,11 @@ export default function SiteNavigation({ lang }: { lang: Locale }) {
             >
               {zh ? "首頁" : "Home"}
             </Link>
-            {links.map(([path, label]) => (
-              <div key={path}>
-                <Link
-                  href={`${base}${path}`}
-                  onClick={() => setOpen(false)}
-                  className="block border-b border-[#173f5f]/15 py-4 font-bold text-[#173f5f]"
-                >
-                  {label} →
-                </Link>
-                {path === "/services" && (
-                  <div className="grid gap-3 py-4 pl-4 sm:grid-cols-2">
-                    {services.map((s) => (
-                      <Link
-                        key={s.slug}
-                        onClick={() => setOpen(false)}
-                        href={`${base}/services/${s.slug}`}
-                        className="py-2 text-sm text-[#66717b]"
-                      >
-                        {s[lang].title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+            {links.map(([path, label]) => path === "/services" ? (
+              <ServiceDropdown key={path} lang={lang} mobile onNavigate={() => setOpen(false)} />
+            ) : (
+              <Link key={path} href={`${base}${path}`} onClick={() => setOpen(false)} className="block border-b border-[#173f5f]/15 py-4 font-bold text-[#173f5f]">{label} →</Link>
             ))}
-            <Link
-              href={`${base}/products`}
-              onClick={() => setOpen(false)}
-              className="block py-4 font-bold text-[#173f5f]"
-            >
-              {zh ? "派對用品" : "Party supplies"} →
-            </Link>
-            <Link
-              href={`${base}/cart`}
-              onClick={() => setOpen(false)}
-              className="block py-4 font-bold text-[#173f5f]"
-            >
-              {zh ? "購物車" : "Cart"} →
-            </Link>
           </div>
         </nav>
       )}
