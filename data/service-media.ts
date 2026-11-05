@@ -32,11 +32,11 @@ export const SERVICE_MEDIA: Record<string, ServiceMedia[]> = {
     }
   },
   {
-    "id": "DS0GhBRkjOU",
+    "id": "DS9gle9EtM2",
     "type": "video",
     "autoPlay": true,
     "portrait": true,
-    "src": "/media/services/birthday-parties/DS0GhBRkjOU.mp4",
+    "src": "/media/services/birthday-parties/DS9gle9EtM2.mp4",
     "label": {
       "zh-TW": "生日派對佈置 · 影片 02",
       "en": "Birthday party styling · Film 02"
@@ -65,11 +65,11 @@ export const SERVICE_MEDIA: Record<string, ServiceMedia[]> = {
     }
   },
   {
-    "id": "DZKQJJryXK0",
+    "id": "DUFG1gMEgvr",
     "type": "video",
     "autoPlay": true,
     "portrait": true,
-    "src": "/media/services/birthday-parties/DZKQJJryXK0.mp4",
+    "src": "/media/services/birthday-parties/DUFG1gMEgvr.mp4",
     "label": {
       "zh-TW": "生日派對佈置 · 影片 05",
       "en": "Birthday party styling · Film 05"
@@ -89,16 +89,16 @@ export const SERVICE_MEDIA: Record<string, ServiceMedia[]> = {
 ],
 "balloon-decoration": [
   {
-    "id": "IMG_0121",
+    "id": "IMG_4417",
     "type": "image",
-    "src": "/media/services/balloon-decoration/IMG_0121.jpg",
+    "src": "/media/services/balloon-decoration/IMG_4417.jpg",
     "label": {
-      "zh-TW": "紅白嘉年華彩虹投幣攤位設計圖與實景",
-      "en": "Red-and-white carnival coin-toss booth design and installation"
+      "zh-TW": "粉紅童話動物與熱氣球生日背景牆設計圖及氣球佈置實景",
+      "en": "Pink woodland fairy and hot-air balloon birthday backdrop design and balloon setup"
     },
     "alt": {
-      "zh-TW": "紅白嘉年華彩虹投幣攤位設計圖與實景",
-      "en": "Red-and-white carnival coin-toss booth design and installation"
+      "zh-TW": "粉紅童話動物與熱氣球生日背景牆設計圖及氣球佈置實景",
+      "en": "Pink woodland fairy and hot-air balloon birthday backdrop design and balloon setup"
     }
   },
   {
@@ -154,16 +154,16 @@ export const SERVICE_MEDIA: Record<string, ServiceMedia[]> = {
     }
   },
   {
-    "id": "IMG_5871",
+    "id": "IMG_8527",
     "type": "image",
-    "src": "/media/services/balloon-decoration/IMG_5871.jpg",
+    "src": "/media/services/balloon-decoration/IMG_8527.jpg",
     "label": {
-      "zh-TW": "粉紫狐狸主題百日宴背景牆與氣球設計實景",
-      "en": "Pink and lilac fox-themed baby celebration backdrop design and setup"
+      "zh-TW": "粉藍粉紅性別揭曉拱門背景牆設計圖與氣球佈置實景",
+      "en": "Pastel blue and pink gender reveal arch backdrop design and balloon setup"
     },
     "alt": {
-      "zh-TW": "粉紫狐狸主題百日宴背景牆與氣球設計實景",
-      "en": "Pink and lilac fox-themed baby celebration backdrop design and setup"
+      "zh-TW": "粉藍粉紅性別揭曉拱門背景牆設計圖與氣球佈置實景",
+      "en": "Pastel blue and pink gender reveal arch backdrop design and balloon setup"
     }
   }
 ],
